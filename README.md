@@ -1,69 +1,58 @@
-# React + TypeScript + Vite
+# Curl Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[日本語版 README はこちら](/docs/ja/README.md)
 
-Currently, two official plugins are available:
+App URL: [https://d249wz41volo8p.cloudfront.net/](https://d249wz41volo8p.cloudfront.net/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![App Image](docs/en/app_image.png)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This application is a tool that **automatically generates curl commands** for sending HTTP requests.
+By simply entering the method, URL, headers, and body, the corresponding curl command is generated instantly.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### How to Use
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. Select the **HTTP method** (e.g., GET, POST).
+1. Enter the **request URL**.
+1. Add **headers, body, or authentication info** as needed.
+1. Choose additional options (e.g., `-i`, `-L`, `-v`, `-k`) using checkboxes.
+1. The curl command is generated and displayed in real time based on your input.
+1. Click the **Copy** button to copy it to your clipboard.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Use Cases
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Quickly test API requests.
+- Generate multiple curl commands for different scenarios.
+- Learn and review how to write curl commands and use common options.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Features
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Real-time curl command generation** based on input.
+- **Common options** can be easily selected with checkboxes.
+- **Add or remove multiple headers** dynamically.
+- Supports **Basic Authentication** and **Bearer Tokens**.
+- **Light / Dark mode switching** supported.
+- **Language switching (Japanese / English)** supported.
+
+## Technologies Used
+
+### Frontend
+
+| Category         | Technology                        |
+| ---------------- | --------------------------------- |
+| Language         | TypeScript                        |
+| Library          | React                             |
+| Styling          | Tailwind CSS, Shadcn UI           |
+| Icons            | lucide-react                      |
+| State Management | React Hooks (useState, useEffect) |
+| Development Env  | Docker, Docker Compose            |
+| Hosting          | S3 + CloudFront                   |
+
+### Backend
+
+None (frontend-only architecture)
+
+## System Architecture
+
+![System Architecture](docs/system_configuration_diagram.svg)
